@@ -45,7 +45,7 @@ export default function Contact() {
         <h2 className="display">
           <span className="split-line"><span>Got a system that</span></span>
           <br />
-          <span className="split-line"><span className="display-italic">needs listening to?</span></span>
+          <span className="split-line" style={{ display: "contents" }}><span className="display-italic"  >needs listening to?</span></span>
         </h2>
         <p className="lead reveal-c">
           I&apos;m open to contract work, full-time roles, and small open-source collaborations — especially
