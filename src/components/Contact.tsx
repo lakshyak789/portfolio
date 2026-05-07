@@ -64,8 +64,10 @@ export default function Contact() {
             </a>
           </div>
           <div className="link-block reveal-c">
-            <div className="label">Phone</div>
-            <span className="val">+91 94101 40226</span>
+            <div className="label">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/lakshya-khanna-8b861754/" target="_blank" rel="noreferrer">
+              @Lakshya Khanna
+            </a>
           </div>
           <div className="link-block reveal-c">
             <div className="label">Where</div>
