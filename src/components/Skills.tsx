@@ -15,7 +15,7 @@ const SKILL_GROUPS = [
   },
   {
     h: "AI & audio",
-    items: ["Whisper", "Whisper.cpp", "Vision AI", "FFmpeg", "Kaggle (fine-tune)", "Prompt orchestration"],
+    items: ["Whisper", "Whisper.cpp", "FFmpeg", "Kaggle (fine-tune)", "Prompt orchestration"],
   },
   {
     h: "Glue & ops",
