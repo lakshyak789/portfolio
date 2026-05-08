@@ -73,6 +73,12 @@ export default function Contact() {
             <div className="label">Where</div>
             <span className="val">Dehradun, IN</span>
           </div>
+          <div className="link-block reveal-c">
+            <div className="label">Résumé</div>
+            <a href="/CV_Lakshya.pdf" download="Lakshya-Khanna-CV.pdf">
+              Download CV ↓
+            </a>
+          </div>
         </div>
 
         <div className="footer-bottom">

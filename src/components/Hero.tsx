@@ -210,8 +210,15 @@ export default function Hero() {
     const target = document.getElementById("about");
     if (!target) return;
     const lenis = window.__lenis;
-    if (lenis) lenis.scrollTo(target, { offset: 0, duration: 1.4 });
-    else target.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (lenis) {
+      lenis.scrollTo(target, {
+        offset: 0,
+        duration: 1.8,
+        easing: (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+      });
+    } else {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
