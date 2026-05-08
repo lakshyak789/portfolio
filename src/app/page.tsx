@@ -35,7 +35,7 @@ export default function Home() {
     setTimeout(() => {
       const loader = document.querySelector(".loader");
       if (loader) loader.classList.add("hidden");
-    }, 600);
+    }, 2800);
 
     document.fonts?.ready.then(() => ScrollTrigger.refresh());
 
