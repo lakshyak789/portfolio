@@ -220,8 +220,8 @@ export default function Hero() {
 
       <div className="hero-content">
         <h1 className="display" ref={headlineRef}>
-          <span className="split-line"><span>Quietly building</span></span>{" "}
-          <span className="split-line"><span className="display-italic">loud</span></span>{" "}
+          <span className="split-line" ><span>Quietly building</span></span>{" "}
+          <span className="split-line" style={{display: "contents"}}><span className="display-italic">loud</span></span>{" "}
           <span className="split-line"><span>things</span></span>
           <br />
           <span className="split-line"><span>with code &amp; care.</span></span>
