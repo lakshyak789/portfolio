@@ -1,4 +1,14 @@
+"use client";
+
+import { sendGAEvent } from "@next/third-parties/google";
+
 export default function Nav() {
+  const handleCvClick = () =>
+    sendGAEvent("event", "cv_download", {
+      location: "nav_mobile",
+      file_name: "CV_Lakshya.pdf",
+    });
+
   return (
     <nav className="nav">
       <div className="brand">Lakshya Khanna</div>
@@ -13,6 +23,7 @@ export default function Nav() {
         className="nav-cv-mobile"
         href="/CV_Lakshya.pdf"
         download="Lakshya-Khanna-CV.pdf"
+        onClick={handleCvClick}
         aria-label="Download résumé"
       >
         CV <span aria-hidden="true">↓</span>

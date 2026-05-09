@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
@@ -75,7 +76,16 @@ export default function Contact() {
           </div>
           <div className="link-block reveal-c">
             <div className="label">Résumé</div>
-            <a href="/CV_Lakshya.pdf" download="Lakshya-Khanna-CV.pdf">
+            <a
+              href="/CV_Lakshya.pdf"
+              download="Lakshya-Khanna-CV.pdf"
+              onClick={() =>
+                sendGAEvent("event", "cv_download", {
+                  location: "contact_section",
+                  file_name: "CV_Lakshya.pdf",
+                })
+              }
+            >
               Download CV ↓
             </a>
           </div>
