@@ -238,8 +238,8 @@ export default function Hero() {
           <div className="meta-block reveal-item">
             <div className="meta-label">Currently</div>
             <div className="meta-value">
-              Working as a freelancer — full-stack engineer at CS Technology, building monitoring &amp; AI tooling
-              that keeps services breathing.
+              Contracting with CS Technology on <span className="display-italic">Ferroglobe (US)</span> —
+              engineering monitoring &amp; AI tooling for industrial plants that can&apos;t afford downtime.
             </div>
           </div>
           <div className="meta-block reveal-item">

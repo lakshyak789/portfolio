@@ -8,10 +8,11 @@ const ROLES = [
   {
     when: "2026 — Present",
     company: "CS Technology LLC",
-    role: "Contract Full-Stack Developer",
+    role: "Contract Full-Stack Engineer · for Ferroglobe (US)",
     summary:
-      "Built a Plant Health Management System: a full-stack monitoring platform with admin controls, a Python heartbeat agent, and incident workflows.",
+      "Engineering a Plant Health Management System for Ferroglobe's US operations — a full-stack monitoring platform with admin controls, a Python heartbeat agent, and incident workflows. Offshore, across timezones.",
     bullets: [
+      "Client: Ferroglobe (US) · industrial metals",
       "React · FastAPI · PostgreSQL · Python",
       "Heartbeat agent pings services every 60s",
       "Real-time green/red status dashboard",
@@ -21,9 +22,9 @@ const ROLES = [
   {
     when: "2024 — 2025",
     company: "Isha Foundation",
-    role: "Volunteer · Whisper Pipelines",
+    role: "Full-Stack Engineer · Whisper AI pipelines",
     summary:
-      "Improved an internal Whisper transcription service — added Tamil support via Whisper.cpp, queueing under GPU pressure, and a custom Confluence diff tool.",
+      "Designed and built speech-to-text pipelines on Whisper AI — added Tamil support via Whisper.cpp, GPU-pressure queueing, and a custom Confluence diff tool. Full-stack: FastAPI backends, React frontends.",
     bullets: [
       "Whisper.cpp + FastAPI · FFmpeg chunking (15s)",
       "Fine-tuned Whisper on 400h on Kaggle",
@@ -42,10 +43,15 @@ const ROLES = [
   {
     when: "2021 — 2022",
     company: "Ibexlabs",
-    role: "Software Engineer",
+    role: "Software Engineer · for Labra.io (US)",
     summary:
-      "Front-end UI in TypeScript/React/Redux with Jest. Back-end APIs in Go and Python. Wrote a ConnectWise CRM integration end-to-end.",
-    bullets: ["TypeScript · React · Redux · Jest", "Go · Python · PostgreSQL", "ConnectWise CRM integration"],
+      "Engineered for Labra.io (US) — front-end UI in TypeScript/React/Redux with Jest, back-end APIs in Go and Python. Owned a ConnectWise CRM integration end-to-end.",
+    bullets: [
+      "Client: Labra.io (US) · AWS marketplace SaaS",
+      "TypeScript · React · Redux · Jest",
+      "Go · Python · PostgreSQL",
+      "ConnectWise CRM integration",
+    ],
   },
   {
     when: "2019 — 2021",
