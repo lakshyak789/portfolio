@@ -9,6 +9,14 @@ export default function Nav() {
         <a href="#skills">Stack</a>
         <a href="#contact">Contact</a>
       </div>
+      <a
+        className="nav-cv-mobile"
+        href="/CV_Lakshya.pdf"
+        download="Lakshya-Khanna-CV.pdf"
+        aria-label="Download résumé"
+      >
+        CV <span aria-hidden="true">↓</span>
+      </a>
     </nav>
   );
 }
