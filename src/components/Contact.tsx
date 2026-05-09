@@ -91,10 +91,10 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="footer-bottom">
+        <footer className="footer-bottom">
           <div>© 2026 — Lakshya Khanna</div>
           <div>Built with GSAP · Lenis · three.js · Next.js</div>
-        </div>
+        </footer>
       </div>
     </section>
   );
