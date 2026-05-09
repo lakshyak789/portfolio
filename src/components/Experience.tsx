@@ -17,6 +17,7 @@ const ROLES = [
       "Heartbeat agent pings services every 60s",
       "Real-time green/red status dashboard",
       "Email-subscription system per service",
+      "Also: bug fixes & feature work on a legacy Django REST + React TypeScript app",
     ],
   },
   {

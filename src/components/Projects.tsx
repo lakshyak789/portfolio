@@ -25,7 +25,7 @@ const PROJECTS = [
       "Built as a free alternative to enterprise call assistants — and earned its community traction by refusing to put the useful parts behind a paywall.",
       "It listens to live audio for in-call advice, lets you drop in UI screenshots and returns ready-to-use front-end code, and parses your résumé into 15 specific interview questions tailored to it.",
     ],
-    stack: ["Python", "React", "Whisper", "WebRTC"],
+    stack: ["Python", "React", "Whisper", "Vision AI", "WebRTC"],
     repo: "https://github.com/lakshyak789/AI_meeting-copilot",
     repoLabel: "github.com/lakshyak789/AI_meeting-copilot",
   },

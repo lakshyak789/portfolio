@@ -19,7 +19,7 @@ const SKILL_GROUPS = [
   },
   {
     h: "Glue & ops",
-    items: ["Docker", "Jenkins", "WebRTC", "Autobahn pub/sub", "Slack/Email automation", "Confluence/Jira scripts"],
+    items: ["AWS", "Docker", "Linux", "Jenkins", "WebRTC", "Autobahn pub/sub", "Slack/Email automation", "Confluence/Jira scripts"],
   },
 ];
 
