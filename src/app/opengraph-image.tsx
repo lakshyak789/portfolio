@@ -36,7 +36,7 @@ export default async function Image() {
           }}
         >
           <div style={{ display: "flex" }}>The Quiet Engineer</div>
-          <div style={{ display: "flex" }}>lakshyakhanna.xyz</div>
+          <div style={{ display: "flex" }}>lakshya.space</div>
         </div>
 
         {/* Center: name + tagline */}

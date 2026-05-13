@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://www.lakshyakhanna.xyz";
+const SITE_URL = "https://www.lakshya.space";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

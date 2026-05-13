@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const SITE_URL = "https://www.lakshyakhanna.xyz";
+const SITE_URL = "https://www.lakshya.space";
 const SITE_TITLE = "Lakshya Khanna — The Quiet Engineer";
 const SITE_DESCRIPTION =
   "Portfolio of Lakshya Khanna — full-stack engineer working at the seams of AI, audio, and infrastructure. Seven years across React, TypeScript, Python, FastAPI, and Whisper AI pipelines.";
@@ -110,7 +110,7 @@ const personSchema = {
   sameAs: [
     "https://github.com/lakshyak789",
     "https://www.linkedin.com/in/lakshya-khanna-8b861754/",
-    "https://lakshya.space",
+    "https://www.lakshyakhanna.xyz",
   ],
   worksFor: {
     "@type": "Organization",
