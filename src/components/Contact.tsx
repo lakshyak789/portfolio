@@ -55,6 +55,22 @@ export default function Contact() {
 
         <div className="links-grid">
           <div className="link-block reveal-c">
+            <div className="label">Book a call</div>
+            <a
+              href="https://cal.com/lakshya-khanna-qi3khn/30min"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() =>
+                sendGAEvent("event", "book_call_click", {
+                  location: "contact_section",
+                  provider: "cal.com",
+                })
+              }
+            >
+              30 min · cal.com ↗
+            </a>
+          </div>
+          <div className="link-block reveal-c">
             <div className="label">Email</div>
             <a href="mailto:Lakshyak789@gmail.com">Lakshyak789@gmail.com</a>
           </div>
