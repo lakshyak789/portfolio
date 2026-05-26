@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Lakshya Khanna — The Quiet Engineer";
+export const alt = "Lakshya Khanna — Full-Stack Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -35,7 +35,7 @@ export default async function Image() {
               "ui-monospace, 'SF Mono', Menlo, Consolas, monospace",
           }}
         >
-          <div style={{ display: "flex" }}>The Quiet Engineer</div>
+          <div style={{ display: "flex" }}>Full-Stack Engineer</div>
           <div style={{ display: "flex" }}>lakshya.space</div>
         </div>
 

@@ -27,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const SITE_URL = "https://www.lakshya.space";
-const SITE_TITLE = "Lakshya Khanna — The Quiet Engineer";
+const SITE_TITLE = "Lakshya Khanna — Full-Stack Engineer";
 const SITE_DESCRIPTION =
   "Portfolio of Lakshya Khanna — full-stack engineer working at the seams of AI, audio, and infrastructure. Seven years across React, TypeScript, Python, FastAPI, and Whisper AI pipelines.";
 
