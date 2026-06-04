@@ -181,7 +181,7 @@ export default function About() {
             </div>
           </div>
           <div className="right">
-            <div className="eyebrow" style={{ marginBottom: 18 }}>About — 01</div>
+            <div className="eyebrow" style={{ marginBottom: 18 }}>About</div>
             <h2 className="display" ref={headRef}>
               <span className="split-line"><span>I write software</span></span>{" "}
               <span className="split-line"><span className="display-italic">that listens</span></span>{" "}

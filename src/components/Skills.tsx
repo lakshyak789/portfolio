@@ -72,7 +72,7 @@ export default function Skills() {
       <div className="container">
         <div className="section-header">
           <div>
-            <div className="num">04 — Tools at hand</div>
+            <div className="num">Tools at hand</div>
             <h2 style={{ marginTop: 16 }}>
               The kit, <span className="display-italic">honestly</span>.
             </h2>

@@ -41,7 +41,7 @@ export default function Contact() {
       </div>
       <div className="container">
         <div className="eyebrow reveal-c" style={{ marginBottom: 32 }}>
-          05 — Let&apos;s talk
+          Let&apos;s talk
         </div>
         <h2 className="display">
           <span className="split-line"><span>Got a system that</span></span>

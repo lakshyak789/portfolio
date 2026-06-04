@@ -140,7 +140,7 @@ export default function Experience() {
       <div className="container">
         <div className="section-header">
           <div>
-            <div className="num">03 — A working life</div>
+            <div className="num">A working life</div>
             <h2 style={{ marginTop: 16 }}>
               Seven years, <span className="display-italic">one through-line.</span>
             </h2>

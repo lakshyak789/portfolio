@@ -4,7 +4,29 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const PROJECTS = [
+type Project = {
+  idx: string;
+  title: string;
+  tagline: string;
+  body: string[];
+  stack: string[];
+  repo?: string;
+  repoLabel?: string;
+  note?: string;
+};
+
+const PROJECTS: Project[] = [
+  {
+    idx: "WORK / 01",
+    title: "A chatbot that reads docs, runs SQL, and answers in tables and charts.",
+    tagline: "MES Assist — configurable AI assistant + embeddable widget.",
+    body: [
+      "Built end-to-end for a Manufacturing Execution System — a no-code admin panel to configure chatbots (prompts, model, RAG knobs) and a self-contained widget that drops into any page with one <script> tag, isolated by Shadow DOM.",
+      "Engine combines LlamaIndex + Qdrant RAG with a data-agent that runs read-only SQL and internal API calls, returning live plant data as tables and 11 chart types. LLM provider is switchable per-chatbot (Azure OpenAI · OpenRouter · OpenAI). Nginx fronts admin + widget same-origin under the main MES app with fail-safe upstreams.",
+    ],
+    stack: ["Django", "DRF", "React", "TypeScript", "LlamaIndex", "Qdrant", "Docker", "nginx", "Azure OpenAI"],
+    note: "Production at CS Technology",
+  },
   {
     idx: "OSS / 01",
     title: "An agent that reads its own stack traces.",
@@ -63,6 +85,85 @@ function ProjectVisual({ idx }: { idx: number }) {
   }, [idx]);
 
   if (idx === 0) {
+    return (
+      <div className="visual" ref={wrapRef} style={{ background: "#ece8de" }}>
+        <div ref={blobRef} style={{ position: "absolute", inset: 0 }}>
+          <svg viewBox="0 0 400 500" style={{ width: "100%", height: "100%", display: "block" }}>
+            {/* Browser frame */}
+            <rect x="24" y="40" width="352" height="380" rx="10" fill="#fbf8f1" stroke="#d8d3c7" />
+            <rect x="24" y="40" width="352" height="32" rx="10" fill="#1f1d1a" />
+            <rect x="24" y="60" width="352" height="12" fill="#1f1d1a" />
+            <circle cx="42" cy="56" r="4" fill="#d97757" />
+            <circle cx="56" cy="56" r="4" fill="#5b8266" opacity="0.5" />
+            <circle cx="70" cy="56" r="4" fill="#3a3633" />
+            <rect x="120" y="48" width="180" height="16" rx="3" fill="#2a2724" />
+            <text x="130" y="60" fill="#a09b93" fontFamily="monospace" fontSize="9">mes.app/dashboard</text>
+
+            {/* Page content peeking through */}
+            <g opacity="0.35">
+              <text x="44" y="100" fill="#1a1a1a" fontFamily="serif" fontStyle="italic" fontSize="14">Plant Operations</text>
+              <rect x="44" y="112" width="220" height="6" rx="2" fill="#c9c4b8" />
+              <rect x="44" y="124" width="240" height="6" rx="2" fill="#dad5c8" />
+              <rect x="44" y="136" width="160" height="6" rx="2" fill="#dad5c8" />
+              <rect x="44" y="160" width="120" height="40" rx="4" fill="#dad5c8" />
+              <rect x="170" y="160" width="120" height="40" rx="4" fill="#dad5c8" />
+            </g>
+
+            {/* Floating MES Assist widget */}
+            <g transform="translate(180, 130)" className="float-card">
+              <rect x="0" y="0" width="180" height="270" rx="10" fill="#1f1d1a" stroke="#2a2724" />
+              <rect x="0" y="0" width="180" height="34" rx="10" fill="#161412" />
+              <rect x="0" y="22" width="180" height="12" fill="#161412" />
+              <circle cx="18" cy="17" r="5" fill="#d97757" />
+              <text x="30" y="21" fill="#f6f4ef" fontFamily="serif" fontStyle="italic" fontSize="12">MES Assist</text>
+
+              {/* User message */}
+              <rect x="48" y="48" width="120" height="22" rx="11" fill="#2a2724" />
+              <text x="58" y="62" fill="#a09b93" fontFamily="sans-serif" fontSize="9">furnace temps last 24h?</text>
+
+              {/* Status */}
+              <text x="12" y="88" fill="#6b6862" fontFamily="monospace" fontSize="7">QUERYING SQL...</text>
+
+              {/* Answer card with chart */}
+              <rect x="10" y="98" width="160" height="130" rx="6" fill="#0f0d0b" stroke="#2a2724" />
+              <text x="20" y="116" fill="#6b6862" fontFamily="monospace" fontSize="7">FURNACE 01 · LAST 24H</text>
+              <g transform="translate(20, 124)">
+                {Array.from({ length: 12 }).map((_, i) => {
+                  const h = Math.abs(Math.sin(i * 0.55 + 0.3)) * 70 + 12;
+                  return (
+                    <rect
+                      key={i}
+                      x={i * 11}
+                      y={88 - h}
+                      width="8"
+                      height={h}
+                      fill="#d97757"
+                      opacity={0.45 + Math.abs(Math.sin(i * 0.55 + 0.3)) * 0.55}
+                    />
+                  );
+                })}
+              </g>
+
+              {/* Input bar */}
+              <rect x="10" y="238" width="160" height="22" rx="11" fill="#2a2724" />
+              <text x="20" y="252" fill="#6b6862" fontFamily="sans-serif" fontSize="9">Ask anything…</text>
+              <circle cx="158" cy="249" r="6" fill="#d97757" opacity="0.6" />
+            </g>
+
+            {/* Embed indicator */}
+            <text x="44" y="448" fill="#1a1a1a" fontFamily="monospace" fontSize="9" opacity="0.6">
+              &lt;script src=&quot;/chatbot-widget.js&quot; /&gt;
+            </text>
+            <text x="44" y="464" fill="#7a7770" fontFamily="monospace" fontSize="7">
+              one tag · any page · shadow DOM
+            </text>
+          </svg>
+        </div>
+      </div>
+    );
+  }
+
+  if (idx === 1) {
     return (
       <div className="visual" ref={wrapRef} style={{ background: "#1f1d1a" }}>
         <div ref={blobRef} style={{ position: "absolute", inset: 0 }}>
@@ -190,7 +291,6 @@ function ProjectRow({ project, idx }: { project: (typeof PROJECTS)[number]; idx:
   return (
     <div className={`project ${reverse ? "reverse" : ""}`} ref={rowRef}>
       <div className="info">
-        <div className="idx reveal-fade">{project.idx}</div>
         <h3 className="reveal-fade">{project.title}</h3>
         <div className="tagline reveal-fade">{project.tagline}</div>
         {project.body.map((p, i) => (
@@ -201,9 +301,13 @@ function ProjectRow({ project, idx }: { project: (typeof PROJECTS)[number]; idx:
             <span className="chip" key={s}>{s}</span>
           ))}
         </div>
-        <a className="repo reveal-fade" href={project.repo} target="_blank" rel="noreferrer">
-          ↗ {project.repoLabel}
-        </a>
+        {project.repo ? (
+          <a className="repo reveal-fade" href={project.repo} target="_blank" rel="noreferrer">
+            ↗ {project.repoLabel}
+          </a>
+        ) : project.note ? (
+          <div className="repo reveal-fade">{project.note}</div>
+        ) : null}
       </div>
       <ProjectVisual idx={idx} />
     </div>
@@ -216,13 +320,13 @@ export default function Projects() {
       <div className="container">
         <div className="section-header">
           <div>
-            <div className="num">02 — Open Source</div>
+            <div className="num">Recent Work</div>
             <h2 style={{ marginTop: 16 }}>
-              Open-source projects <span className="display-italic">I built</span>.
+              Things <span className="display-italic">I built</span>.
             </h2>
           </div>
           <div className="mono" style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.18em" }}>
-            BOTH OPEN-SOURCE
+            ONE AT WORK · TWO OPEN-SOURCE
           </div>
         </div>
 
