@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <base href="/chess/">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Chess Battlefield — by Lakshya</title>
 <meta name="description" content="A 3D battle chess game where every piece is a warrior that walks, draws its weapon and fights. Built by Lakshya — lakshya.space">
 <meta name="author" content="Lakshya">
@@ -171,6 +171,105 @@
     position:absolute; inset:auto 10% 45% 10%; z-index:90; color:#ffb0a0; background:rgba(40,8,4,.9);
     border:1px solid #a06050; border-radius:10px; padding:16px 20px; font-family:monospace; font-size:12px; display:none; white-space:pre-wrap;
   }
+
+  /* ============================================================
+     MOBILE / TOUCH / RESPONSIVE  (additive — desktop unaffected:
+     touch-action/user-select are no-ops for mouse, and the @media
+     blocks only apply on small / coarse-pointer screens)
+     ============================================================ */
+  :root {
+    --sa-t: env(safe-area-inset-top, 0px);   --sa-r: env(safe-area-inset-right, 0px);
+    --sa-b: env(safe-area-inset-bottom, 0px); --sa-l: env(safe-area-inset-left, 0px);
+  }
+  /* lock native page gestures so OUR touch + OrbitControls win (no pinch-zoom /
+     double-tap-zoom / pull-to-refresh / text-select stealing the touch) */
+  html, body {
+    touch-action:none; overscroll-behavior:none;
+    -webkit-user-select:none; user-select:none;
+    -webkit-tap-highlight-color:transparent; -webkit-touch-callout:none;
+  }
+  #c { touch-action:none; -webkit-tap-highlight-color:transparent; }
+  #hud { touch-action:none; }
+  .qbtn,.mbtn,#startBtn,.ctl,.promoBtn,#sndBtn,#newBtn,#ctlToggle,#ctxLost button,#credit a,#title .credit a {
+    touch-action:manipulation; -webkit-tap-highlight-color:transparent;
+  }
+  #ctlToggle { display:none; }   /* hamburger — only shown on mobile via @media */
+
+  /* WebGL context-loss banner (mobile OOM / GPU reset) */
+  #ctxLost {
+    position:absolute; inset:0; z-index:60; display:none; flex-direction:column;
+    align-items:center; justify-content:center; gap:16px; text-align:center; padding:24px;
+    background:radial-gradient(ellipse at 50% 40%, rgba(14,34,18,.97), rgba(3,10,5,.99));
+    color:#e8dcb8; font-family:'Cinzel',serif;
+  }
+  #ctxLost.show { display:flex; }
+  #ctxLost .msg { font-size:16px; letter-spacing:.1em; line-height:1.6; max-width:420px; }
+  #ctxLost button {
+    font-family:'Cinzel',serif; font-size:15px; letter-spacing:.12em; cursor:pointer;
+    padding:11px 28px; border-radius:10px; border:1px solid #e7c873;
+    background:linear-gradient(180deg,#e7c873,#9a7a2a); color:#1c1304;
+  }
+  @media (pointer:coarse) {            /* kill sticky hover on touch */
+    .ctl:hover { background:rgba(8,18,10,.78); }
+    .qbtn:hover,.mbtn:hover { transform:none; background:rgba(40,60,35,.6); }
+  }
+
+  @media (max-width:760px), (pointer:coarse) and (max-width:900px) {
+    /* ---- TITLE: fit + scroll, Play always reachable ---- */
+    #title { justify-content:flex-start; overflow-y:auto; -webkit-overflow-scrolling:touch; gap:14px;
+      padding:calc(16px + var(--sa-t)) calc(12px + var(--sa-r)) calc(20px + var(--sa-b)) calc(12px + var(--sa-l)); }
+    #title h1 { font-size:clamp(26px,8vw,42px); margin-top:4px; }
+    #title .sub { font-size:13px; margin-top:-6px; }
+    .panel { padding:14px 14px; gap:10px; width:100%; max-width:440px; }
+    .panel .lbl { font-size:11px; letter-spacing:.18em; }
+    .row { gap:7px; }
+    .qbtn,.mbtn { font-size:12px; padding:9px 12px; min-height:44px; }
+    .qbtn small,.mbtn small { font-size:9px; }
+    #tcRow .mbtn { font-size:11px; padding:8px 9px; }
+    #startBtn { font-size:17px; padding:13px 40px; min-height:48px; }
+    #title .hint { font-size:11px; padding:0 8px; text-align:center; }
+    #title .credit { font-size:11px; }
+    /* ---- TOPBAR ---- */
+    #topbar { top:calc(8px + var(--sa-t)); gap:8px; max-width:calc(100vw - 16px); flex-wrap:wrap; justify-content:center; }
+    #turnChip { font-size:12px; padding:7px 14px; letter-spacing:.06em; }
+    #turnDot { width:10px; height:10px; }
+    .clk { font-size:14px; padding:6px 10px; min-width:62px; }
+    #status { top:calc(52px + var(--sa-t)); font-size:13px; max-width:92vw; padding:0 8px; }
+    /* ---- HAMBURGER + CONTROLS BOTTOM SHEET ---- */
+    #ctlToggle { display:flex; align-items:center; justify-content:center; position:absolute; z-index:25;
+      top:calc(8px + var(--sa-t)); right:calc(8px + var(--sa-r)); width:46px; height:46px; font-size:22px; line-height:1;
+      border-radius:12px; cursor:pointer; pointer-events:auto; color:#e8dcb8; background:rgba(8,18,10,.85);
+      border:1px solid rgba(200,170,90,.45); backdrop-filter:blur(5px); box-shadow:0 4px 18px rgba(0,0,0,.5); }
+    #controls { right:0; left:0; top:auto; bottom:0; width:100%; flex-direction:row; flex-wrap:wrap;
+      align-items:stretch; justify-content:center; gap:8px;
+      padding:14px calc(12px + var(--sa-r)) calc(16px + var(--sa-b)) calc(12px + var(--sa-l));
+      background:rgba(6,14,8,.96); border-top:1px solid rgba(200,170,90,.35); border-radius:18px 18px 0 0;
+      box-shadow:0 -10px 40px rgba(0,0,0,.6); transform:translateY(112%); transition:transform .25s ease;
+      max-height:76vh; max-height:76dvh; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+    #controls.ctl-open { transform:translateY(0); }
+    #controls .grpLbl { flex-basis:100%; text-align:center; margin:6px 0 0; font-size:11px; }
+    #viewGroup,#qGroup { flex-direction:row; flex-wrap:wrap; align-items:stretch; justify-content:center; gap:8px; flex-basis:100%; }
+    .ctl { min-width:0; flex:1 1 44%; font-size:13px; padding:12px 8px; min-height:46px; }
+    #sndBtn,#newBtn { flex:1 1 44%; }
+    /* ---- TRAYS / misc ---- */
+    .tray { max-width:42vw; gap:4px; padding:5px 8px; min-height:30px; bottom:calc(10px + var(--sa-b)); }
+    #trayW { left:calc(8px + var(--sa-l)); } #trayB { right:calc(8px + var(--sa-r)); }
+    .tray .cap { font-size:17px; } .trayLbl { font-size:8px; top:-14px; }
+    #fpsTag { left:calc(8px + var(--sa-l)); top:calc(8px + var(--sa-t)); }
+    #credit { bottom:calc(5px + var(--sa-b)); font-size:10px; }
+    #toast { bottom:calc(90px + var(--sa-b)); font-size:12px; padding:8px 18px; max-width:88vw; text-align:center; }
+    .modal .box { padding:22px 22px; margin:16px; max-width:90vw; } .modal h2 { font-size:24px; } .modal p { font-size:14px; }
+    .promoBtn { font-size:34px; padding:4px 12px; min-height:52px; min-width:52px; }
+  }
+  @media (max-width:760px) and (orientation:portrait) {   /* clocks stack under the turn chip */
+    #topbar { flex-direction:column; gap:6px; }
+    #turnChip { order:0; } #clkW { order:1; } #clkB { order:2; }
+  }
+  @media (max-height:480px) and (orientation:landscape) {
+    #title { justify-content:flex-start; }
+    #controls { max-height:90vh; max-height:90dvh; }
+    .tray { max-width:30vw; }
+  }
 </style>
 <script type="importmap">
 {
@@ -192,6 +291,7 @@
     <div class="clk hidden" id="clkB">10:00</div>
   </div>
   <div id="status"></div>
+  <button id="ctlToggle" aria-label="Menu" aria-expanded="false">⚙</button>
   <div id="controls">
     <div class="grpLbl">VIEW</div>
     <div id="viewGroup">
@@ -281,6 +381,11 @@
 <div id="loader" class="hidden">
   <div class="spin"></div>
   <div class="ltxt">Loading your battle…</div>
+</div>
+
+<div id="ctxLost">
+  <div class="msg">The battlefield lost its connection to the GPU.<br>This usually means the device ran low on memory.</div>
+  <button id="ctxReload">Reload Battle</button>
 </div>
 
 <div id="err"></div>
@@ -2446,8 +2551,24 @@ const E = G.engine, P = G.pieces, V = G.env, A = G.anim, sfx = G.sfx;
 const $ = id => document.getElementById(id);
 
 let renderer, scene, camera, controls;
-let qualityName = 'high';
+
+/* ---- mobile / touch detection (computed once) ----
+   coarse pointer = no mouse (phone/tablet); also catch UA + iPadOS-as-Mac. */
+const IS_MOBILE = (function () {
+  const coarse = matchMedia('(pointer: coarse)').matches;
+  const smallW = matchMedia('(max-width: 900px)').matches;
+  const uaMob  = /Android|iPhone|iPad|iPod|Mobile|Silk|Kindle/i.test(navigator.userAgent);
+  const iPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+  return (coarse && smallW) || uaMob || iPadOS;
+})();
+if (IS_MOBILE) {
+  /* phones can't carry the heavy scene: strip shadows + most foliage so low/medium stay alive */
+  Object.assign(V.QPRESETS.low,    { shadows:false, foliageShadow:false, trees:14, cards:2, ferns:30, grass:0, rocks:8,  fireflies:0, butterflies:0, shafts:0, aa:false });
+  Object.assign(V.QPRESETS.medium, { shadows:false, foliageShadow:false, trees:30, cards:3, ferns:60, grass:0, rocks:12, fireflies:0, butterflies:0, shafts:0, aa:false });
+}
+let qualityName = IS_MOBILE ? 'low' : 'high';
 let board, turn, epTarget, mode = 'ai', gameOver = false, busy = false;
+let contextLost = false;
 let pieces3d;                 // 8x8 of piece groups
 let selected = null;          // [f,r]
 let viewMode = 'classic';
@@ -2518,6 +2639,7 @@ function initGL() {
   renderer.toneMappingExposure = 1.05;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   G.renderer = renderer;     // debug access
+  G.camera = () => camera;   // debug access (projection for input tests)
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(46, innerWidth / innerHeight, 0.1, 300);
   camera.position.set(0, 14.8, 20.6);
@@ -2528,17 +2650,37 @@ function initGL() {
   controls.maxPolarAngle = Math.PI / 2.05;
   controls.minDistance = 5;
   controls.maxDistance = 55;
+  renderer.domElement.style.touchAction = 'none';   // belt-and-braces: one-finger drag never scrolls the page
+
+  /* WebGL context-loss handling (mobile OOM / GPU reset / tab backgrounding) so a
+     lost context shows a recover prompt instead of a frozen black screen. */
+  const cv = renderer.domElement;
+  cv.addEventListener('webglcontextlost', e => { e.preventDefault(); contextLost = true; $('ctxLost').classList.add('show'); }, false);
+  cv.addEventListener('webglcontextrestored', () => {
+    contextLost = false; $('ctxLost').classList.remove('show');
+    renderer.shadowMap.enabled = V.QPRESETS[qualityName].shadows;
+    applyPixelRatio();
+    try { V.dispose(scene); } catch (_) {}
+    V.build(scene, V.QPRESETS[qualityName]);
+    plantRealTrees();
+    scene.traverse(o => { if (o.material) o.material.needsUpdate = true; });
+  }, false);
+
   addEventListener('resize', onResize);
   onResize();
 }
 function onResize() {
   camera.aspect = innerWidth / innerHeight;
+  /* portrait phones are tall-narrow — widen FOV so the whole board fits instead of clipping */
+  camera.fov = (IS_MOBILE && innerHeight > innerWidth) ? 60 : 46;
   camera.updateProjectionMatrix();
   applyPixelRatio();
 }
 function applyPixelRatio() {
   const q = V.QPRESETS[qualityName];
-  renderer.setPixelRatio(q.pr);
+  /* phones ship 2.5-3x DPR — hard-cap it so a 36MB scene isn't oversampled to death */
+  const hardCap = IS_MOBILE ? (qualityName === 'low' ? 1.0 : 1.5) : 2.5;
+  renderer.setPixelRatio(Math.min(q.pr, window.devicePixelRatio || 1, hardCap));
   renderer.setSize(innerWidth, innerHeight);
 }
 function applyQuality(name, rebuildEnv) {
@@ -2807,13 +2949,26 @@ function showMoves(moves) {
 
 /* ---------------- input ---------------- */
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
-let downAt = null;
-function onPointerDown(e) { downAt = [e.clientX, e.clientY]; }
+let downAt = null;            // { x, y, t, id, touch } — only the primary pointer
+let activePointers = 0;
+function onPointerDown(e) {
+  activePointers++;
+  if (activePointers > 1) { downAt = null; return; }   // 2nd finger = pinch/orbit, never a tap
+  if (e.isPrimary === false) return;
+  downAt = { x: e.clientX, y: e.clientY, t: performance.now(), id: e.pointerId, touch: e.pointerType === 'touch' };
+}
+function onPointerCancel(e) {
+  activePointers = Math.max(0, activePointers - 1);
+  if (downAt && e.pointerId === downAt.id) downAt = null;   // gesture stolen by the browser — no tap
+}
 function onPointerUp(e) {
-  if (!downAt) return;
-  const dx = e.clientX - downAt[0], dy = e.clientY - downAt[1];
-  downAt = null;
-  if (dx * dx + dy * dy > 36) return;          // was a drag — orbiting
+  activePointers = Math.max(0, activePointers - 1);
+  if (!downAt || e.pointerId !== downAt.id) return;
+  const d = downAt; downAt = null;
+  const dx = e.clientX - d.x, dy = e.clientY - d.y;
+  const moveLimit = d.touch ? 14 : 6;                       // fingers jitter far more than a mouse
+  if (dx * dx + dy * dy > moveLimit * moveLimit) return;    // it was an orbit drag, not a tap
+  if (d.touch && performance.now() - d.t > 700) return;     // long press, not a tap
   if (busy || gameOver) return;
   if (mode === 'ai' && turn === 'b') return;
   ptr.x = (e.clientX / innerWidth) * 2 - 1;
@@ -3187,6 +3342,7 @@ const clock = new THREE.Clock();
 let fpsAcc = 0, fpsN = 0, fpsT = 0;
 function loop() {
   requestAnimationFrame(loop);
+  if (contextLost) return;     // GPU context gone — skip rendering until it's restored
   const dt = Math.min(clock.getDelta(), 0.05);
   const t = clock.elapsedTime;
   A.update(dt, t);
@@ -3221,6 +3377,10 @@ document.querySelectorAll('#qRow .qbtn').forEach(b => {
     qualityName = b.dataset.q;
   };
 });
+if (IS_MOBILE) {   /* reflect the forced 'low' default on the title row and the in-game quality group */
+  document.querySelectorAll('#qRow .qbtn').forEach(x => x.classList.toggle('sel', x.dataset.q === 'low'));
+  document.querySelectorAll('#qGroup .ctl').forEach(x => x.classList.toggle('sel', x.dataset.q === 'low'));
+}
 document.querySelectorAll('#mRow .mbtn').forEach(b => {
   if (b.classList.contains('soon')) return;   // "coming soon" — not selectable
   b.onclick = () => {
@@ -3270,8 +3430,13 @@ $('startBtn').onclick = () => {
         V.build(scene, G.quality);
         plantRealTrees();
         renderer.shadowMap.enabled = G.quality.shadows;
-        renderer.domElement.addEventListener('pointerdown', onPointerDown);
-        renderer.domElement.addEventListener('pointerup', onPointerUp);
+        /* pointerdown on the canvas (where the gesture starts); pointerup/cancel on
+           WINDOW so they survive OrbitControls' setPointerCapture and catch a finger
+           that lifts just off the canvas edge. pointercancel is required so a
+           browser-stolen gesture clears the pending tap instead of leaving it stale. */
+        renderer.domElement.addEventListener('pointerdown', onPointerDown, { passive: true });
+        window.addEventListener('pointerup', onPointerUp);
+        window.addEventListener('pointercancel', onPointerCancel);
         loop();
         glReady = true;
       } else {
@@ -3308,6 +3473,25 @@ $('sndBtn').onclick = () => {
 };
 $('newBtn').onclick = backToMenu;
 $('againBtn').onclick = backToMenu;
+
+/* mobile controls: ⚙ hamburger opens a bottom sheet; tapping any control closes it */
+const ctlToggle = $('ctlToggle'), controlsEl = $('controls');
+if (ctlToggle) {
+  ctlToggle.addEventListener('click', () => {
+    const open = controlsEl.classList.toggle('ctl-open');
+    ctlToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    ctlToggle.textContent = open ? '✕' : '⚙';
+  });
+  controlsEl.addEventListener('click', e => {
+    if (e.target.closest('.ctl, #sndBtn, #newBtn')) {
+      controlsEl.classList.remove('ctl-open');
+      ctlToggle.setAttribute('aria-expanded', 'false');
+      ctlToggle.textContent = '⚙';
+    }
+  });
+}
+/* context-loss banner: one-tap recovery if auto-restore doesn't fire */
+(function () { const b = $('ctxReload'); if (b) b.onclick = () => location.reload(); })();
 
 /* debug hook for automated testing */
 G.debugMove = (ff, fr, tf, tr) => {
