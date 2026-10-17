@@ -12,6 +12,8 @@ type Project = {
   stack: string[];
   repo?: string;
   repoLabel?: string;
+  live?: string;
+  liveLabel?: string;
   note?: string;
 };
 
@@ -50,6 +52,18 @@ const PROJECTS: Project[] = [
     stack: ["Python", "React", "Whisper", "Vision AI", "WebRTC"],
     repo: "https://github.com/lakshyak789/AI_meeting-copilot",
     repoLabel: "github.com/lakshyak789/AI_meeting-copilot",
+  },
+  {
+    idx: "PLAY / 01",
+    title: "Chess where every capture is an actual fight.",
+    tagline: "Chess Battlefield. 3D battle chess that runs in the browser.",
+    body: [
+      "Every piece is a warrior with its own kill move. The rook is a war elephant that grabs its victim with its trunk and throws it off the board. Knights are horses that rear up and kick. On checkmate, every attacker walks over and finishes the king off in a slow close-up.",
+      "Full chess rules, Stockfish compiled to WebAssembly for the computer opponent, and online games with a friend over WebRTC with no backend at all. Built with three.js in a single HTML file, with quality tiers and touch controls so it still runs on a phone.",
+    ],
+    stack: ["three.js", "WebGL", "Stockfish WASM", "WebRTC", "JavaScript"],
+    live: "https://chess.lakshya.space",
+    liveLabel: "chess.lakshya.space",
   },
 ];
 
@@ -209,6 +223,77 @@ function ProjectVisual({ idx }: { idx: number }) {
     );
   }
 
+  if (idx === 3) {
+    const pieces: Record<string, string> = {
+      "0,0": "♜", "3,0": "♛", "4,0": "♚", "7,0": "♜",
+      "2,1": "♟", "5,1": "♟", "6,1": "♟",
+      "2,2": "♞", "5,3": "♝",
+      "4,4": "♞", "3,5": "♙",
+      "0,6": "♙", "1,6": "♙", "5,6": "♙", "6,6": "♙",
+      "4,7": "♔", "7,7": "♖", "2,7": "♗",
+    };
+    return (
+      <div className="visual" ref={wrapRef} style={{ background: "#1f2622" }}>
+        <div ref={blobRef} style={{ position: "absolute", inset: 0 }}>
+          <svg viewBox="0 0 400 500" style={{ width: "100%", height: "100%", display: "block" }}>
+            <defs>
+              <radialGradient id="chessGlow" cx="0.5" cy="0.45" r="0.6">
+                <stop offset="0" stopColor="#d97757" stopOpacity="0.22" />
+                <stop offset="1" stopColor="#d97757" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            <rect width="400" height="500" fill="url(#chessGlow)" />
+            <text x="56" y="70" fill="#a09b93" fontFamily="monospace" fontSize="9" letterSpacing="1.5">
+              VS STOCKFISH · GRANDMASTER
+            </text>
+            <g className="float-card">
+              <rect x="50" y="86" width="300" height="300" rx="4" fill="#161412" />
+              {Array.from({ length: 64 }).map((_, i) => {
+                const c = i % 8, r = Math.floor(i / 8);
+                const hit = c === 4 && r === 4;
+                return (
+                  <rect
+                    key={i}
+                    x={56 + c * 36}
+                    y={92 + r * 36}
+                    width="36"
+                    height="36"
+                    fill={hit ? "#d97757" : (c + r) % 2 === 0 ? "#ece8de" : "#5b8266"}
+                    opacity={hit ? 0.85 : 1}
+                  />
+                );
+              })}
+              {Object.entries(pieces).map(([k, glyph]) => {
+                const [c, r] = k.split(",").map(Number);
+                return (
+                  <text
+                    key={k}
+                    x={56 + c * 36 + 18}
+                    y={92 + r * 36 + 28}
+                    textAnchor="middle"
+                    fontSize="26"
+                    fill="#161412"
+                  >
+                    {glyph}
+                  </text>
+                );
+              })}
+            </g>
+            <text x="56" y="420" fill="#ece8de" fontFamily="serif" fontStyle="italic" fontSize="16">
+              Knight takes e4.
+            </text>
+            <text x="56" y="440" fill="#6b6862" fontFamily="monospace" fontSize="9">
+              hooves down · victim launched
+            </text>
+            <text x="344" y="440" textAnchor="end" fill="#d97757" fontFamily="monospace" fontSize="9">
+              3+2 · 02:41
+            </text>
+          </svg>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="visual" ref={wrapRef} style={{ background: "#f0ede5" }}>
       <div ref={blobRef} style={{ position: "absolute", inset: 0 }}>
@@ -301,7 +386,11 @@ function ProjectRow({ project, idx }: { project: (typeof PROJECTS)[number]; idx:
             <span className="chip" key={s}>{s}</span>
           ))}
         </div>
-        {project.repo ? (
+        {project.live ? (
+          <a className="repo reveal-fade" href={project.live} target="_blank" rel="noreferrer">
+            ↗ Play it at {project.liveLabel}
+          </a>
+        ) : project.repo ? (
           <a className="repo reveal-fade" href={project.repo} target="_blank" rel="noreferrer">
             ↗ {project.repoLabel}
           </a>
@@ -326,7 +415,7 @@ export default function Projects() {
             </h2>
           </div>
           <div className="mono" style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.18em" }}>
-            ONE AT WORK · TWO OPEN-SOURCE
+            ONE AT WORK · TWO OPEN-SOURCE · ONE FOR FUN
           </div>
         </div>
 
