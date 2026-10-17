@@ -19,9 +19,9 @@ const PROJECTS: Project[] = [
   {
     idx: "WORK / 01",
     title: "A chatbot that reads docs, runs SQL, and answers in tables and charts.",
-    tagline: "MES Assist — configurable AI assistant + embeddable widget.",
+    tagline: "MES Assist. Configurable AI assistant with an embeddable widget.",
     body: [
-      "Built end-to-end for a Manufacturing Execution System — a no-code admin panel to configure chatbots (prompts, model, RAG knobs) and a self-contained widget that drops into any page with one <script> tag, isolated by Shadow DOM.",
+      "Built end-to-end for a Manufacturing Execution System. A no-code admin panel to configure chatbots (prompts, model, RAG knobs), and a self-contained widget that drops into any page with one <script> tag, isolated by Shadow DOM.",
       "Engine combines LlamaIndex + Qdrant RAG with a data-agent that runs read-only SQL and internal API calls, returning live plant data as tables and 11 chart types. LLM provider is switchable per-chatbot (Azure OpenAI · OpenRouter · OpenAI). Nginx fronts admin + widget same-origin under the main MES app with fail-safe upstreams.",
     ],
     stack: ["Django", "DRF", "React", "TypeScript", "LlamaIndex", "Qdrant", "Docker", "nginx", "Azure OpenAI"],
@@ -33,7 +33,7 @@ const PROJECTS: Project[] = [
     tagline: "Open-source AI log analyzer & auto-debugger.",
     body: [
       "A Python agent that watches multi-service apps in real time, catches crashes the moment they happen, and walks the trace itself.",
-      "When something breaks, an AI pipeline reads the stack, locates the seam, and proposes an immediate code fix — front-end or back-end. Slack and email pings carry the diff, not just the error.",
+      "When something breaks, an AI pipeline reads the stack, finds the issue, and proposes a code fix on either side (front-end or back-end). Slack and email pings carry the diff, not just the error.",
     ],
     stack: ["Python", "OpenAI", "FastAPI", "Slack API", "SMTP"],
     repo: "https://github.com/lakshyak789/AI_log_analyzer",
@@ -44,7 +44,7 @@ const PROJECTS: Project[] = [
     title: "A free copilot that sits beside you in the call.",
     tagline: "Open-source AI call & interview assistant.",
     body: [
-      "Built as a free alternative to enterprise call assistants — and earned its community traction by refusing to put the useful parts behind a paywall.",
+      "Built as a free alternative to enterprise call assistants. It picked up community traction by keeping the useful parts open.",
       "It listens to live audio for in-call advice, lets you drop in UI screenshots and returns ready-to-use front-end code, and parses your résumé into 15 specific interview questions tailored to it.",
     ],
     stack: ["Python", "React", "Whisper", "Vision AI", "WebRTC"],
@@ -240,10 +240,10 @@ function ProjectVisual({ idx }: { idx: number }) {
               &quot;I&apos;d start with a heartbeat
             </text>
             <text x="32" y="212" fill="#1a1a1a" fontFamily="serif" fontSize="13">
-              agent — every minute, ping
+              agent that pings each
             </text>
             <text x="32" y="230" fill="#1a1a1a" fontFamily="serif" fontSize="13">
-              each service, log latency...&quot;
+              service, logs latency...&quot;
             </text>
             <text x="32" y="252" fill="#5b8266" fontFamily="monospace" fontSize="9">
               ↑ context: system design

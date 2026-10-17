@@ -183,15 +183,15 @@ export default function About() {
           <div className="right">
             <div className="eyebrow" style={{ marginBottom: 18 }}>About</div>
             <h2 className="display" ref={headRef}>
-              <span className="split-line"><span>I write software</span></span>{" "}
-              <span className="split-line"><span className="display-italic">that listens</span></span>{" "}
-              <span className="split-line"><span>before it speaks.</span></span>
+              <span className="split-line"><span>I build software</span></span>{" "}
+              <span className="split-line"><span className="display-italic">that stays</span></span>{" "}
+              <span className="split-line"><span>out of the way.</span></span>
             </h2>
 
             <div ref={bodyRef} style={{ marginTop: 56 }}>
               <p className="lede reveal-p">
-                Most of what I build watches something quietly — services breathing, audio streaming, logs
-                scrolling — and steps in only when it matters.
+                Most of what I build watches something quietly. Services running, audio streaming, logs
+                scrolling. It only steps in when it has to.
               </p>
               <p className="body reveal-p">
                 I&rsquo;m Lakshya. I&rsquo;ve spent the last seven years moving between front-end and back-end
@@ -200,8 +200,8 @@ export default function About() {
                 audio in chunks. Log analyzers that read their own stack traces.
               </p>
               <p className="body reveal-p">
-                I&rsquo;m happiest when the work is quiet, durable, and slightly unglamorous — when a tool you
-                wrote three months ago is still running, and nobody had to think about it.
+                I&rsquo;m happiest when the work is quiet and durable. When a tool I wrote three months ago
+                is still running, and nobody had to think about it.
               </p>
 
               <div className="stats">

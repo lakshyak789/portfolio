@@ -238,8 +238,8 @@ export default function Hero() {
           <div className="meta-block reveal-item">
             <div className="meta-label">Currently</div>
             <div className="meta-value">
-              Contracting with CS Technology on <span className="display-italic">Ferroglobe (US)</span> —
-              engineering monitoring &amp; AI tooling for industrial plants that can&apos;t afford downtime.
+              Contracting with CS Technology on <span className="display-italic">Ferroglobe (US)</span>.
+              Building monitoring and AI tooling for industrial plants that can&apos;t go down.
             </div>
           </div>
           <div className="meta-block reveal-item">

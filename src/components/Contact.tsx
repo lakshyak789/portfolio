@@ -49,8 +49,8 @@ export default function Contact() {
           <span className="split-line" style={{ display: "contents" }}><span className="display-italic"  >needs listening to?</span></span>
         </h2>
         <p className="lead reveal-c">
-          I&apos;m open to contract work, full-time roles, and small open-source collaborations — especially
-          anything sitting between AI, audio, and infrastructure.
+          I&apos;m open to contract work, full-time roles, and small open-source collaborations, especially
+          anything around AI, audio, and infrastructure.
         </p>
 
         <div className="links-grid">
@@ -108,7 +108,7 @@ export default function Contact() {
         </div>
 
         <footer className="footer-bottom">
-          <div>© 2026 — Lakshya Khanna</div>
+          <div>© 2026 Lakshya Khanna</div>
           <div>Built with GSAP · Lenis · three.js · Next.js</div>
         </footer>
       </div>

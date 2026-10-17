@@ -27,15 +27,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const SITE_URL = "https://www.lakshya.space";
-const SITE_TITLE = "Lakshya Khanna — Full-Stack Engineer";
+const SITE_TITLE = "Lakshya Khanna | Full-Stack Engineer";
 const SITE_DESCRIPTION =
-  "Portfolio of Lakshya Khanna — full-stack engineer working at the seams of AI, audio, and infrastructure. Seven years across React, TypeScript, Python, FastAPI, and Whisper AI pipelines.";
+  "Portfolio of Lakshya Khanna. Full-stack engineer working across AI, audio, and infrastructure. Seven years with React, TypeScript, Python, FastAPI, and Whisper AI pipelines.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
-    template: "%s — Lakshya Khanna",
+    template: "%s | Lakshya Khanna",
   },
   description: SITE_DESCRIPTION,
   keywords: [

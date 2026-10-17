@@ -6,11 +6,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const ROLES = [
   {
-    when: "2026 — Present",
+    when: "2026 - Present",
     company: "CS Technology LLC",
     role: "Contract Full-Stack Engineer · for Ferroglobe (US)",
     summary:
-      "Engineering a Plant Health Management System for Ferroglobe's US operations — a full-stack monitoring platform with admin controls, a Python heartbeat agent, and incident workflows. Offshore, across timezones.",
+      "Building a Plant Health Management System for Ferroglobe's US operations. Full-stack monitoring platform with admin controls, a Python heartbeat agent, and incident workflows. Offshore, across timezones.",
     bullets: [
       "Client: Ferroglobe (US) · industrial metals",
       "React · FastAPI · PostgreSQL · Python",
@@ -21,11 +21,11 @@ const ROLES = [
     ],
   },
   {
-    when: "2024 — 2025",
+    when: "2024 - 2025",
     company: "Isha Foundation",
     role: "Full-Stack Engineer · Whisper AI pipelines",
     summary:
-      "Designed and built speech-to-text pipelines on Whisper AI — added Tamil support via Whisper.cpp, GPU-pressure queueing, and a custom Confluence diff tool. Full-stack: FastAPI backends, React frontends.",
+      "Designed and built speech-to-text pipelines on Whisper AI. Added Tamil support via Whisper.cpp, GPU-pressure queueing, and a custom Confluence diff tool. Full-stack: FastAPI backends, React frontends.",
     bullets: [
       "Whisper.cpp + FastAPI · FFmpeg chunking (15s)",
       "Fine-tuned Whisper on 400h on Kaggle",
@@ -34,7 +34,7 @@ const ROLES = [
     ],
   },
   {
-    when: "2023 — 2024",
+    when: "2023 - 2024",
     company: "Isha Foundation",
     role: "Sadhanapada Volunteer · Web team",
     summary:
@@ -42,11 +42,11 @@ const ROLES = [
     bullets: ["React · Apps Script · Looker Studio", "Internal reporting dashboards"],
   },
   {
-    when: "2021 — 2022",
+    when: "2021 - 2022",
     company: "Ibexlabs",
     role: "Software Engineer · for Labra.io (US)",
     summary:
-      "Engineered for Labra.io (US) — front-end UI in TypeScript/React/Redux with Jest, back-end APIs in Go and Python. Owned a ConnectWise CRM integration end-to-end.",
+      "Engineered for Labra.io (US). Front-end in TypeScript, React, Redux with Jest. Back-end APIs in Go and Python. Owned a ConnectWise CRM integration end-to-end.",
     bullets: [
       "Client: Labra.io (US) · AWS marketplace SaaS",
       "TypeScript · React · Redux · Jest",
@@ -55,7 +55,7 @@ const ROLES = [
     ],
   },
   {
-    when: "2019 — 2021",
+    when: "2019 - 2021",
     company: "SupportGenie",
     role: "React.js Developer",
     summary:
@@ -68,11 +68,11 @@ const ROLES = [
     ],
   },
   {
-    when: "2018 — 2019",
+    when: "2018 - 2019",
     company: "Actionable Science",
     role: "JavaScript Developer Intern",
     summary:
-      "First professional role. Built React UI for a YAML-driven chatbot platform — the kind of system that taught me to read other people's configs carefully.",
+      "First professional role. Built React UI for a YAML-driven chatbot platform. That's where I learned to read other people's configs carefully.",
     bullets: ["React · YAML flow authoring"],
   },
   {
